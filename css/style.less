@@ -1,0 +1,259 @@
+@font-face {
+    font-family: 'ArimoRegular';
+    src: url(../fonts/Arimo-Regular.ttf);
+}
+@font-face {
+    font-family: 'ArimoItalic';
+    src: url(../fonts/Arimo-Italic.ttf);
+}
+@font-face {
+    font-family: 'RobotoSlabBold';
+    src: url(../fonts/RobotoSlab-Bold.ttf);
+}
+@font-face {
+    font-family: 'RobotoSlabLight';
+    src: url(../fonts/RobotoSlab-Light.ttf);
+}
+@font-face {
+    font-family: 'RobotoSlabRegular';
+    src: url(../fonts/RobotoSlab-Regular.ttf);
+}
+@color-pink-opacity: rgba(255, 182, 182, 0.6);
+@color-pink-noopacity: rgba(255, 182, 182, 1);
+@color-white: #ffffff;
+@color-pink: #ffdada;
+
+body, html {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    -webkit-font-smoothing: antialiased;
+}
+
+button, input, textarea {
+    outline: none;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    border: none;
+    background: transparent;
+}
+
+input, textarea {
+    padding-left: 10px;
+    box-sizing: border-box;
+}
+
+button {
+    cursor: pointer;
+}
+
+ul, li {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+input::-webkit-input-placeholder {
+    // color: @color-white;
+    // font-family: PTSansItalic;
+    // -webkit-font-smoothing: antialiased;
+}
+
+.grid {
+    width: 1170px;
+    height: 100%;
+    margin: auto;
+    position: relative;
+}
+
+.frontpage {
+    width: 100%;
+    height: 100%;
+    background: url(../img/bg-1.jpg) center top no-repeat;
+    background-size: 100% auto;
+    position: relative;
+    z-index: 0;
+    padding-top: 25px;
+
+    &:after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background: url(../img/pattern.png);
+    }
+
+    &:before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background: linear-gradient(rgba(0, 0, 0, .6), rgba(0, 0, 0, 0));
+    }
+
+    header {
+        display: table;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .schedule, .logo, .social {
+        position: relative;
+        z-index: 1;
+        display: table-cell;
+        vertical-align: middle;
+        width: 33%;
+        text-align: center;
+        font-size: 18px;
+        font-family: ArimoRegular;
+        color: @color-pink-opacity;
+    }
+
+    .schedule {
+
+        img, .text {
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .text {
+            margin-left: 5px;
+            span {
+                text-transform: uppercase;
+            }
+        }
+    }
+
+    .social {
+        &-icon {
+            display: inline-block;
+            margin-left: 20px;
+            cursor: pointer;
+            opacity: .6;
+
+            &:hover {
+                opacity: 1;
+            }
+        }
+    }
+
+    .nav {
+        width: 100%;
+        position: relative;
+        z-index: 1;
+        display: table;
+        border-top: 1px solid rgba(255, 182, 182, 0.4);
+        border-bottom: 1px solid rgba(255, 182, 182, 0.4);
+        padding: 3px 0;
+        box-sizing: border-box;
+
+        &__item {
+            display: table-cell;
+            vertical-align: middle;
+            text-align: center;
+            position: relative;
+
+            &:nth-child(1) {
+                text-align: left;
+
+                &:after {
+                    content: '';
+                    position: absolute;
+                    width: 10px;
+                    height: 10px;
+                    background: rgba(255, 255, 255, 0.6);
+                    top: 50%;
+                    right: -5px;
+                    transform: translateY(-50%) rotate(45deg);
+                }
+            }
+
+            &:nth-child(3) {
+                padding-right: 50px;
+
+                &:after {
+                    content: '';
+                    position: absolute;
+                    width: 10px;
+                    height: 10px;
+                    background: rgba(255, 255, 255, 0.6);
+                    top: 50%;
+                    left: -7px;
+                    transform: translateY(-50%) rotate(45deg);
+                }
+            }
+
+            &:nth-child(5) {
+                text-align: right;
+            }
+        }
+
+        &__link {
+
+            a {
+                font-size: 16px;
+                font-family: RobotoSlabRegular;
+                color: @color-white;
+                text-transform: uppercase;
+            }
+        }
+        &__mail, &__phone {
+            img, span {
+                display: inline-block;
+                vertical-align: middle;
+            }
+
+            img {
+                margin-right: 5px;
+            }
+        }
+
+        &__mail {
+
+            a {
+                font-size: 16px;
+                font-family: ArimoItalic;
+                color: @color-pink;
+
+                span {
+                    padding-bottom: 2px;
+                    border-bottom: 2px dotted @color-pink;
+                }
+            }
+        }
+
+        &__phone {
+
+            a {
+                font-size: 18px;
+                font-family: RobotoSlabBold;
+                color: @color-pink-noopacity;
+            }
+        }
+    }
+
+    .title {
+        width: 460px;
+        position: relative;
+        top: 25%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 1;
+        text-align: center;
+        font-size: 36px;
+        font-family: RobotoSlabRegular;
+        color: @color-white;
+        text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.75);
+    }
+}
