@@ -26,13 +26,12 @@ var bouqets = [
 ];
 
 function renderGalleryItem(bouqet) {
-    console.log(bouqet);
     return $('<div/>', {'class': 'gallery__item'})
     .append($('<img/>', {'src': bouqet.url}))
     .append($('<div/>', {'class': 'description'})
         .append($('<div/>', {'class': 'title'}).text(bouqet.title))
         .append($('<div/>', {'class': 'text'}).text(bouqet.text))
-        .append($('<div/>', {'class': 'price'}).text(bouqet.price))
+        .append($('<div/>', {'class': 'price'}).append($('<span/>').text(bouqet.price)).append($('<span/>').text(' руб')))
         .append($('<button/>', {'class': 'button'}).text('Добавить в корзину')))
 }
 

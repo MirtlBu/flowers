@@ -100,7 +100,7 @@ input::-webkit-input-placeholder {
 
 .main-text {
     font-size: 14px;
-    font-family: Arimo;
+    font-family: ArimoRegular;
     color: @color-gray-light;
     width: 400px;
     text-align: center;
@@ -465,7 +465,7 @@ input::-webkit-input-placeholder {
 
         .text {
             font-size: 14px;
-            font-family: Arimo;
+            font-family: ArimoRegular;
             color: @color-gray-light;
             margin-top: 15px;
         }
@@ -476,7 +476,7 @@ input::-webkit-input-placeholder {
             color: @color-pink-noopacity;
             margin-top: 15px;
 
-            span {
+            span:first-child {
                 font-family: RobotoSlabBold;
             }
         }
@@ -517,4 +517,109 @@ input::-webkit-input-placeholder {
             color: @color-white;
         }
     }
+}
+
+.gift {
+    background: url(../img/bg-2.jpg);
+    height: 365px;
+
+    &__wrap {
+        background: url(../img/border.png);
+        width: 570px;
+        height: 302px;
+        padding: 40px 50px;
+        box-sizing: border-box;
+        text-align: center;
+        margin:  0 auto;
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+
+        span {
+            font-size: 36px;
+            font-family: RobotoSlabRegular;
+            color: @color-white;
+            text-transform: uppercase;
+            display: inline-block;
+            position: relative;
+            top: 58%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    }
+}
+
+.reviews {
+
+    &__container {
+        width: 100%;
+    }
+
+    &__item {
+        float: left;
+        margin-bottom: 20px;
+
+        .text {
+            width: 700px;
+            padding: 25px 30px;
+            box-sizing: border-box;
+            border-radius: 25px;
+            background: #ffdada;
+            font-size: 14px;
+            font-family: ArimoRegular;
+            color: @color-white;
+            line-height: 1.7;
+            position: relative;
+
+            &:after {
+                content: '';
+                position: absolute;
+                z-index: -1;
+                width: 55px;
+                height: 33px;
+                background: #ffdada;
+                top: 0px;
+                left: -12px;
+                transform: rotate(180deg) skew(45deg);
+            }
+        }
+
+        .title {
+            font-size: 18px;
+            font-family: RobotoSlabRegular;
+            color: #555555;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        .image, .description {
+            float: left
+        }
+
+        .description {
+            margin: 20px 40px;
+        }
+
+
+
+        &:nth-child(2n) {
+            float: right;
+
+            .image, .description {
+                float: right;
+                text-align: right;
+            }
+
+            .text {
+
+                &:after {
+                    top: 3px;
+                    right: -14px;
+                    left: auto;
+                    transform: rotate(135deg) skew(45deg);
+                }
+            }
+        }
+    }
+
 }
