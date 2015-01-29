@@ -22,6 +22,8 @@
 @color-pink-noopacity: rgba(255, 182, 182, 1);
 @color-white: #ffffff;
 @color-pink: #ffdada;
+@color-gray-dark: #343434;
+@color-gray-light: #9c9c9c;
 
 body, html {
     width: 100%;
@@ -71,6 +73,55 @@ input::-webkit-input-placeholder {
     height: 100%;
     margin: auto;
     position: relative;
+}
+
+.main-title {
+    font-size: 36px;
+    font-family: RobotoSlabRegular;
+    color: @color-gray-dark;
+    text-transform: uppercase;
+    position: relative;
+    text-align: center;
+    margin-top: 45px;
+    padding-bottom: 5px;
+    box-sizing: border-box;
+
+    &:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 210px;
+        height: 1px;
+        background: @color-pink-noopacity;
+    }
+}
+
+.main-text {
+    font-size: 14px;
+    font-family: Arimo;
+    color: @color-gray-light;
+    width: 400px;
+    text-align: center;
+    margin: 20px auto 0 auto;
+}
+
+.button {
+    padding: 5px 20px;
+    box-sizing: border-box;
+    background: linear-gradient(#ffb6b6, #e78e8e);;
+    border: 1px solid #e08f9e;
+    -webkit-box-shadow: -1px 2px 0px 0px rgba(203, 207, 213, 0.32);
+    -moz-box-shadow:    -1px 2px 0px 0px rgba(203, 207, 213, 0.32);
+    box-shadow:         -1px 2px 0px 0px rgba(203, 207, 213, 0.32);
+    font-size: 14px;
+    font-family: RobotoSlabBold;
+    color: @color-white;
+
+    &:hover {
+        background: #e78e8e;
+    }
 }
 
 .frontpage {
@@ -243,13 +294,20 @@ input::-webkit-input-placeholder {
         }
     }
 
+    .center {
+        position: relative;
+        z-index: 1;
+        // top: 25%;
+        // transform: translateY(-50%);
+        margin-top: 50px;
+    }
+
     .title {
         width: 460px;
         padding-bottom: 50px;
         box-sizing: border-box;
         position: relative;
         margin: 0 auto;
-        z-index: 1;
         text-align: center;
         font-size: 36px;
         font-family: RobotoSlabRegular;
@@ -265,6 +323,7 @@ input::-webkit-input-placeholder {
             left: 50%;
             transform: translateX(-50%);
             background: rgba(255, 182, 182, 0.6);
+            z-index: 1;
         }
     }
 
@@ -272,7 +331,9 @@ input::-webkit-input-placeholder {
         width: 100%;
         position: relative;
         display: table;
-        z-index: 1;
+        margin-top: 40px;
+        padding-bottom: 50px;
+        box-sizing: border-box;
 
         &__item {
             display: table-cell;
@@ -297,6 +358,162 @@ input::-webkit-input-placeholder {
         .text {
             font-size: 18px;
             font-family: ArimoRegular;
+            color: @color-white;
+        }
+
+        &:after {
+            content: '';
+            position: absolute;
+            width: 210px;
+            height: 1px;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 182, 182, 0.6);
+            z-index: 1;
+        }
+    }
+
+    .down {
+        position: absolute;
+        bottom: 35px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 1;
+        text-align: center;
+
+        img {
+            opacity: .7;
+            cursor: pointer;
+
+            &:hover {
+                opacity: 1;
+            }
+        }
+    }
+}
+
+.gallery {
+
+    .nav {
+        display: table;
+        width: 70%;
+        text-align: center;
+        margin:  40px auto 20px auto;
+
+        &__item {
+            font-size: 16px;
+            font-family: RobotoSlabRegular;
+            color: @color-pink-noopacity;
+            text-transform: uppercase;
+            display: table-cell;
+            cursor: pointer;
+            padding: 5px 0;
+            box-sizing: border-box;
+
+            &:hover {
+
+            }
+        }
+
+        &__item--active {
+            background: @color-pink-noopacity;
+            color: @color-white;
+            border-radius: 30px;
+        }
+    }
+
+    &__container {
+        padding-bottom: 30px;
+        box-sizing: border-box;
+        border-bottom: 1px solid rgba(0, 0, 0, .15);
+    }
+
+    &__item {
+        width: 270px;
+        height: 465px;
+        margin-top: 40px;
+        position: relative;
+        display: inline-block;
+        vertical-align: top;
+        overflow: hidden;
+        cursor: pointer;
+
+        &:not(:last-child) {
+            margin-right: 18px;
+        }
+
+        .description {
+            position: absolute;
+            bottom: -60px;
+            left: 0;
+            text-align: center;
+            padding: 15px 20px;
+            background: @color-white;
+            transition: all .15s linear;
+        }
+
+        .title {
+            font-size: 18px;
+            font-family: RobotoSlabRegular;
+            color: #555555;
+            text-transform: uppercase;
+            padding-bottom: 10px;
+            box-sizing: border-box;
+            border-bottom: 1px solid @color-pink-noopacity;
+        }
+
+        .text {
+            font-size: 14px;
+            font-family: Arimo;
+            color: @color-gray-light;
+            margin-top: 15px;
+        }
+
+        .price {
+            font-size: 24px;
+            font-family: RobotoSlabLight;
+            color: @color-pink-noopacity;
+            margin-top: 15px;
+
+            span {
+                font-family: RobotoSlabBold;
+            }
+        }
+
+        .button {
+            margin-top: 15px;
+        }
+
+        &:hover {
+            -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
+            -moz-box-shadow:    0px 0px 5px 0px rgba(0, 0, 0, 0.2);
+            box-shadow:         0px 0px 5px 0px rgba(0, 0, 0, 0.2);
+
+            .description {
+                bottom: 0;
+            }
+        }
+    }
+
+    .pagination {
+        margin: 30px 0;
+        text-align: center;
+
+        &__item {
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            font-size: 18px;
+            font-family: RobotoSlabBold;
+            color: @color-pink-noopacity;
+            background: @color-white;
+            display: inline-block;
+            text-align: center;
+            cursor: pointer;
+        }
+        &__item--active {
+            background: @color-pink-noopacity;
             color: @color-white;
         }
     }
