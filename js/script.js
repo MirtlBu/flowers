@@ -8,7 +8,7 @@ var bouqets = [
     {
         url: 'img/bouquet-2.jpg',
         title: 'Солнечный день',
-        text: 'Красивый и теплый по фактуре букет состоит из герминий, ирисов, филинггрина, кустовых нарцисов, статицы. Диаметр букета около 30см.',
+        text: 'Красивый и теплый по фактуре букет состоит из герминий, ирисов, филинггрина, кустовых нарцисов, статицы.',
         price: '3500'
     },
     {
@@ -20,7 +20,7 @@ var bouqets = [
     {
         url: 'img/bouquet-4.jpg',
         title: 'Летний луг',
-        text: 'Этот круглый букет создан на основе разнообразных «диких» цветов: ромашек, антирринума и ирисов. Диаметр букета около 50см.',
+        text: 'Этот круглый букет создан из разнообразных «диких» цветов: ромашек, антирринума и ирисов. Диаметр букета около 50см.',
         price: '4400'
     },
 ];
@@ -80,3 +80,59 @@ $(function(){
         $(this).addClass('pagination__item--active');
     })
 });
+
+
+$(function() {
+  $('a[href*=#]:not([href=#])').click(function() {
+    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+      var target = $(this.hash);
+      target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+      if (target.length) {
+        $('html,body').animate({
+          scrollTop: target.offset().top
+        }, 1000);
+        return false;
+      }
+    }
+  });
+});
+
+
+ymaps.ready(init);
+var myMap, myPlacemark;
+
+function init(){
+    myMap = new ymaps.Map("map", {
+        center: [55.76, 37.64],
+        zoom: 14
+    });
+    Placemark1 = new ymaps.Placemark([55.76, 37.64],
+        { content: 'Москва!', balloonContent: 'ул. Старая, 34/2' },
+        {
+            iconLayout: 'default#image',
+            iconImageHref: 'img/icon-pin.png',
+            iconImageSize: [77, 65],
+            iconImageOffset: [-3, -42]
+    });
+    Placemark2 = new ymaps.Placemark([55.751899, 37.61589],
+        { content: 'Москва!', balloonContent: 'ул. Старая, 34/2' },
+        {
+            iconLayout: 'default#image',
+            iconImageHref: 'img/icon-pin.png',
+            iconImageSize: [60, 51],
+            iconImageOffset: [-3, -42]
+    });
+    Placemark3 = new ymaps.Placemark([55.752432, 37.637648],
+        { content: 'Москва!', balloonContent: 'ул. Старая, 34/2' },
+        {
+            iconLayout: 'default#image',
+            iconImageHref: 'img/icon-pin.png',
+            iconImageSize: [60, 51],
+            iconImageOffset: [-3, -42]
+    });
+    myMap.geoObjects.add(Placemark1);
+    myMap.geoObjects.add(Placemark2);
+    myMap.geoObjects.add(Placemark3);
+    myMap.controls.remove('typeSelector').remove('mapTools').remove('searchControl').remove('trafficControl');
+    myMap.behaviors.disable("scrollZoom");
+}

@@ -5,7 +5,7 @@
     <meta content="text/html; charset=utf-8; ru" http-equiv="Content-Type">
     <meta name="viewport" content="width=device-width, initial-scale=0">
     <title>Цветы и подарки</title>
-    <!--<script src="http://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>-->
+    <script src="http://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
 
 </head>
 <body>
@@ -24,9 +24,9 @@
                 </div>
             </header>
             <ul class="nav">
-                <li class="nav__item nav__link"><a href="">Наши букеты</a></li>
-                <li class="nav__item nav__link"><a href="">Отзывы наших клиентов</a></li>
-                <li class="nav__item nav__link"><a href="">Наши контакты</a></li>
+                <li class="nav__item nav__link"><a href="#gallery">Наши букеты</a></li>
+                <li class="nav__item nav__link"><a href="#reviews">Отзывы наших клиентов</a></li>
+                <li class="nav__item nav__link"><a href="#contacts">Наши контакты</a></li>
                 <li class="nav__item nav__mail"><a href="mailto:example@google.com">
                     <img src="img/icon-mail.png">
                     <span>Написать нам</span>
@@ -57,10 +57,10 @@
                     </li>
                 </ul>
             </div>
-            <div class="down"><img src="img/icon-down.png"></div>
+            <a href="#gallery" class="down"><img src="img/icon-down.png"></a>
         </div>
    </div>
-   <div class="gallery">
+   <div class="gallery" id="gallery">
         <div class="grid">
             <div class="main-title">Наши букеты</div>
             <div class="main-text">Мы представляем букеты и цветочные композиции в разных ценовых категориях, чтобы вы всегда могли выбрать именно то, что нужно.</div>
@@ -88,7 +88,7 @@
             </div>
         </div>
    </div>
-   <div class="reviews">
+   <div class="reviews" id="reviews">
         <div class="grid">
             <div class="main-title">Отзывы клиентов</div>
             <div class="main-text">Что может быть убедительнее? Мы считаем, что рекомендации других людей, с которыми мы сотрудничаем, скажут о нас гораздо больше.</div>
@@ -122,6 +122,46 @@
                     </div>
                 </div>
             </div>
+            <div style="clear: both;"></div>
+        </div>
+   </div>
+   <div class="contacts" id="contacts">
+        <div id="map" style="width: 100%; height: 980px;"></div>
+        <div class="grid">
+            <div class="main-title">Наши контакты</div>
+            <div class="main-text">Мы ответим на любые ваши вопросы в удобное для вас время. Просто свяжитесь с нами по телефону или электронной почте.</div>
+            <ul>
+                <li class="contacts__item address">
+                    <div class="image">
+                        <img src="img/icon-address.png">
+                    </div>
+                    <div class="text">
+                        <span>ул. Академическая, 58</span>
+                        <span>ул. Старая, 34/2</span>
+                        <span>ул. Просторная, 6</span>
+                        <span>прт. Константинопольский, 28</span>
+                    </div>
+                </li>
+                <li class="contacts__item connect">
+                    <div>
+                        <div class="image">
+                            <img src="img/icon-phone-2.png">
+                        </div>
+                        <div class="text">8(495)888-88-88</div>
+                    </div>
+                    <div>
+                        <div class="image">
+                            <img src="img/icon-mail-2.png">
+                        </div>
+                        <div class="text">example@gmail.com</div>
+                    </div>
+                </li>
+                <li class="contacts__item form">
+                    <span>У вас остались вопросы?</span>
+                    <button type="button" class="button">Задать свой вопрос</button>
+                    <span>© FlowerBouquet.ru 2013-2015</span>
+                </li>
+            </ul>
         </div>
    </div>
     <script src="js/jquery-1.11.1.min.js"></script>
