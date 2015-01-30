@@ -97,26 +97,36 @@ $(function() {
   });
 });
 
-$(function() {
-    // if($(window).scrollTop() < $('#frontpage').height()) {
-    //     $(window).one('scroll', function() {
-    //         // $('html,body').animate({scrollTop: $('#gallery').offset().top}, 1000);
-    //        window.scrollTo(0, 0);
-    //     })
-    // }
 
-});
+(function() {
+    var prevPos = 0,
+        galleryTop = $('#gallery').offset().top,
+        animating = false,
+        moveTo = function(top) {
+            animating = true;
+            $('html, body').animate({ scrollTop: top }, 'slow');
+            setTimeout(function() {
+                animating = false;
+            }, 1000);
+        };
 
-$(window).one('scroll', function() {
-    console.log($(window).scrollTop());
-    console.log($('#gallery').offset().top);
-    if($(window).scrollTop() < $('#gallery').offset().top || $(window).scrollTop() == 0) {
-        $("html, body").animate({ scrollTop: $('#gallery').offset().top }, "slow");
-    }
-    else if($(window).scrollTop() > $('#gallery').offset().top) {
-        $("html, body").finish();
-    }
-});
+    $('body').on('mousewheel', function(e) {
+        var pos = $(window).scrollTop();
+        if(animating) {
+            prevPos = pos;
+            return false;
+        }
+        if(pos < galleryTop && pos > 0){
+            moveTo(pos > prevPos ? galleryTop : 0);
+        }
+        prevPos = pos;
+    });
+
+    $(window).on('resize', function() {
+        galleryTop = $('#gallery').offset().top;
+    });
+})();
+
 
 ymaps.ready(init);
 var myMap, myPlacemark;
