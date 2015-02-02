@@ -98,41 +98,133 @@ $(function() {
 });
 
 
+(function() {
+    var prevPos = 0,
+        galleryTop = $('#gallery').offset().top,
+        animating = false,
+        moveTo = function(top) {
+            animating = true;
+            $('html, body').animate({ scrollTop: top }, 'slow');
+            setTimeout(function() {
+                animating = false;
+            }, 1000);
+        };
+
+    $('body').on('mousewheel', function(e) {
+        var pos = $(window).scrollTop();
+        if(animating) {
+            prevPos = pos;
+            return false;
+        }
+        if(pos < galleryTop && pos > 0){
+            moveTo(pos > prevPos ? galleryTop : 0);
+        }
+        prevPos = pos;
+    });
+
+    $(window).on('resize', function() {
+        galleryTop = $('#gallery').offset().top;
+    });
+})();
+
+
 ymaps.ready(init);
 var myMap, myPlacemark;
 
 function init(){
     myMap = new ymaps.Map("map", {
-        center: [55.76, 37.64],
+        center: [55.76, 37.63],
         zoom: 14
     });
-    Placemark1 = new ymaps.Placemark([55.76, 37.64],
-        { content: 'Москва!', balloonContent: 'ул. Старая, 34/2' },
+    Placemark1 = new ymaps.Placemark([55.746586, 37.623894],
+        { content: 'Москва!', balloonContent: 'ул. Старая, 34/2', ballonCloseButton: false },
         {
             iconLayout: 'default#image',
             iconImageHref: 'img/icon-pin.png',
-            iconImageSize: [77, 65],
-            iconImageOffset: [-3, -42]
-    });
-    Placemark2 = new ymaps.Placemark([55.751899, 37.61589],
-        { content: 'Москва!', balloonContent: 'ул. Старая, 34/2' },
+            iconImageSize: [29, 40],
+            iconImageOffset: [-3, -42],
+            hideIconOnBalloonOpen: false,
+            balloonOffset: [0, -60],
+            balloonCloseButton: false
+        });
+
+    Placemark2 = new ymaps.Placemark([55.751222, 37.621383],
+        { content: 'Москва!', balloonContent: 'ул. Старая, 34/2', ballonCloseButton: false },
         {
             iconLayout: 'default#image',
             iconImageHref: 'img/icon-pin.png',
-            iconImageSize: [60, 51],
-            iconImageOffset: [-3, -42]
-    });
-    Placemark3 = new ymaps.Placemark([55.752432, 37.637648],
-        { content: 'Москва!', balloonContent: 'ул. Старая, 34/2' },
+            iconImageSize: [29, 40],
+            iconImageOffset: [-3, -42],
+            hideIconOnBalloonOpen: false,
+            balloonOffset: [0, -60],
+            balloonCloseButton: false
+        });
+
+    Placemark3 = new ymaps.Placemark([55.751004, 37.636189],
+        { content: 'Москва!', balloonContent: 'ул. Старая, 34/2', ballonCloseButton: false },
         {
             iconLayout: 'default#image',
             iconImageHref: 'img/icon-pin.png',
-            iconImageSize: [60, 51],
-            iconImageOffset: [-3, -42]
-    });
+            iconImageSize: [29, 40],
+            iconImageOffset: [-3, -42],
+            hideIconOnBalloonOpen: false,
+            balloonOffset: [0, -60],
+            balloonCloseButton: false
+        });
+
     myMap.geoObjects.add(Placemark1);
     myMap.geoObjects.add(Placemark2);
     myMap.geoObjects.add(Placemark3);
     myMap.controls.remove('typeSelector').remove('mapTools').remove('searchControl').remove('trafficControl');
     myMap.behaviors.disable("scrollZoom");
+
+    Placemark1.events
+        .add('mouseenter', function (e) {
+            // myMap.balloon.open();
+            e.get('target').options.set({
+                'iconImageHref': 'img/icon-pin-hover.png',
+                'iconImageSize': [77, 65],
+                'iconImageOffset': [-13, -65]});
+        })
+        .add('mouseleave', function (e) {
+            // myMap.balloon.close();
+            e.get('target').options.set({
+                'iconImageHref': 'img/icon-pin.png',
+                'iconImageSize': [29, 40],
+                'iconImageOffset': [-3, -42]});
+        });
+
+        Placemark2.events
+        .add('mouseenter', function (e) {
+            // myMap.balloon.open();
+            e.get('target').options.set({
+                'iconImageHref': 'img/icon-pin-hover.png',
+                'iconImageSize': [77, 65],
+                'iconImageOffset': [-13, -65]});
+        })
+        .add('mouseleave', function (e) {
+            // myMap.balloon.close();
+            e.get('target').options.set({
+                'iconImageHref': 'img/icon-pin.png',
+                'iconImageSize': [29, 40],
+                'iconImageOffset': [-3, -42]});
+        });
+
+        Placemark3.events
+        .add('mouseenter', function (e) {
+            // myMap.balloon.open();
+            e.get('target').options.set({
+                'iconImageHref': 'img/icon-pin-hover.png',
+                'iconImageSize': [77, 65],
+                'iconImageOffset': [-13, -65]});
+        })
+        .add('mouseleave', function (e) {
+            // myMap.balloon.close();
+            e.get('target').options.set({
+                'iconImageHref': 'img/icon-pin.png',
+                'iconImageSize': [29, 40],
+                'iconImageOffset': [-3, -42]});
+        });
 }
+
+
