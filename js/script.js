@@ -110,7 +110,7 @@ $(function() {
             }, 1000);
         };
 
-    $('body').on('mousewheel', function(e) {
+    $('body').on('mousewheel DOMMouseScroll', function(e) {
         var pos = $(window).scrollTop();
         if(animating) {
             prevPos = pos;
